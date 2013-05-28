@@ -9,6 +9,9 @@ namespace HelloWorld
         static readonly string doesNotExist = "Does not exist in our records.";
         static readonly string name = "name";
         static readonly string age = "age";
+        static readonly string ageMustBeInteger = "Please enter a valid integer for age as of last birthday.";
+        static readonly string notOfAge = "Sorry, you are too young to use this service.";
+        static readonly string promptVerification = "Please verify your name and age. If there is anything wrong, call us at 555-555-5555.";
 
         static void Main()
         {
@@ -17,22 +20,43 @@ namespace HelloWorld
 
         private static void PrintToConsole()
         {
-            string[] client = new string[2];
-            Console.WriteLine(promptName);
-            string clientName = Console.ReadLine();
-            CheckForNullOrWhiteSpaceInName(client, clientName);
-            Console.WriteLine(promptAge);
-            string clientAge = Console.ReadLine();
-            CheckForNullOrWhiteSpaceInClientAge(client, clientAge);
-            ConsoleKeyInfo c = VerifyClientInformation(client);
-            c = IsSuccess(c);
+            try
+            {
+                string[] client = new string[2];
+                Console.WriteLine(promptName);
+                string name = Console.ReadLine();
+                AddNameToClient(client, name);
+                Console.WriteLine(promptAge);
+                int age = InputAge();
+                AddAgeToClient(client, age);
+                ConsoleKeyInfo c = VerifyClientInformation(client);
+                c = IsSuccess(c);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
-        private static void CheckForNullOrWhiteSpaceInName(string[] client, string clientName)
+        private static int InputAge()
         {
-            if (!string.IsNullOrWhiteSpace(clientName))
+            string clientAgeInput = Console.ReadLine();
+            int age = new int();
+            if (!int.TryParse(clientAgeInput, out age))
             {
-                client[0] = clientName;
+                Console.WriteLine(ageMustBeInteger);
+                clientAgeInput = Console.ReadLine();
+                InputAge();
+            }
+            return age;
+        }
+
+        private static void AddNameToClient(string[] client, string name)
+        {
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                client[0] = name;
             }
             else
             {
@@ -40,20 +64,26 @@ namespace HelloWorld
             }
         }
 
-        private static void CheckForNullOrWhiteSpaceInClientAge(string[] client, string clientAge)
+        private static void AddAgeToClient(string[] client, int age)
         {
-            if (!string.IsNullOrWhiteSpace(clientAge))
+            //A client must be older than 13
+            if (age > 13)
             {
-                client[1] = clientAge;
-            }
+                client[1] = age.ToString();
+            } 
             else
             {
+                //Delete all client information if prospective client is not older than 13.
+                client[0] = doesNotExist;
                 client[1] = doesNotExist;
+                Console.WriteLine(notOfAge);
+                Console.ReadLine();
             }
         }
 
         private static ConsoleKeyInfo VerifyClientInformation(string[] client)
         {
+            Console.WriteLine(promptVerification);
             Console.WriteLine(string.Format("{0}: {1}", name, client[0].ToString()));
             Console.WriteLine(string.Format("{0}: {1}", age, client[1].ToString()));
             ConsoleKeyInfo c = Console.ReadKey();
