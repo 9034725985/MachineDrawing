@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HelloWorld
 {
@@ -14,7 +10,7 @@ namespace HelloWorld
         static readonly string name = "name";
         static readonly string age = "age";
 
-        static void Main(string[] args)
+        static void Main()
         {
             PrintToConsole();
         }
@@ -24,6 +20,16 @@ namespace HelloWorld
             string[] client = new string[2];
             Console.WriteLine(promptName);
             string clientName = Console.ReadLine();
+            CheckForNullOrWhiteSpaceInName(client, clientName);
+            Console.WriteLine(promptAge);
+            string clientAge = Console.ReadLine();
+            CheckForNullOrWhiteSpaceInClientAge(client, clientAge);
+            ConsoleKeyInfo c = VerifyClientInformation(client);
+            c = IsSuccess(c);
+        }
+
+        private static void CheckForNullOrWhiteSpaceInName(string[] client, string clientName)
+        {
             if (!string.IsNullOrWhiteSpace(clientName))
             {
                 client[0] = clientName;
@@ -32,8 +38,10 @@ namespace HelloWorld
             {
                 client[0] = doesNotExist;
             }
-            Console.WriteLine(promptAge);
-            string clientAge = Console.ReadLine();
+        }
+
+        private static void CheckForNullOrWhiteSpaceInClientAge(string[] client, string clientAge)
+        {
             if (!string.IsNullOrWhiteSpace(clientAge))
             {
                 client[1] = clientAge;
@@ -42,14 +50,24 @@ namespace HelloWorld
             {
                 client[1] = doesNotExist;
             }
+        }
+
+        private static ConsoleKeyInfo VerifyClientInformation(string[] client)
+        {
             Console.WriteLine(string.Format("{0}: {1}", name, client[0].ToString()));
             Console.WriteLine(string.Format("{0}: {1}", age, client[1].ToString()));
             ConsoleKeyInfo c = Console.ReadKey();
+            return c;
+        }
+
+        private static ConsoleKeyInfo IsSuccess(ConsoleKeyInfo c)
+        {
             if (c.Key == ConsoleKey.Enter)
             {
                 Console.WriteLine("The program ran successfully.");
                 Console.ReadLine();
             }
+            return c;
         }
     }
 }
