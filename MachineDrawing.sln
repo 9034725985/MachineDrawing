@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{DB364870-8189-43AC-B89A-2615385FABCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeklaWcfService", "TeklaWcfService\TeklaWcfService.csproj", "{FCAA4B14-CC80-4144-93C7-D2A334DFB11F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvalServiceLibrary", "EvalServiceLibrary\EvalServiceLibrary.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{DB364870-8189-43AC-B89A-2615385FABCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB364870-8189-43AC-B89A-2615385FABCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB364870-8189-43AC-B89A-2615385FABCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCAA4B14-CC80-4144-93C7-D2A334DFB11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCAA4B14-CC80-4144-93C7-D2A334DFB11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCAA4B14-CC80-4144-93C7-D2A334DFB11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCAA4B14-CC80-4144-93C7-D2A334DFB11F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
